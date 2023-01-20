@@ -27,3 +27,24 @@ if __name__ == '__main__':
     # sorted() again sorts students names alphabetically, called with student[0], has a conditional at the end of the list in an if statement. if statement is checking if the student in the iterable's score is equal to the value of the second_lowest score. 
         print(student)
         
+
+# Finding the percentage - The provided code stub will read in a dictionary containing key/value pairs of name:[marks] for a list of students. Print the average of the marks array for the student name provided, showing 2 places after the decimal.
+
+if __name__ == '__main__':
+    n = int(input())
+    student_marks = {}
+    for _ in range(n):
+        name, *line = input().split()
+        scores = list(map(float, line))
+        student_marks[name] = scores
+    query_name = input()
+    
+    # retrieve the marks from the dict and store in a var
+    marks = student_marks[query_name]
+    
+    # calculate the average of the student we're quering for and store in var
+    average = sum(marks) / len(marks)    
+    
+    # prints the average marks with two decimal places. 
+    print("{:.2f}".format(average))
+    # the '{:.2f}' is a format specifier that tell python to format the number as a float with 2 decimal places.
