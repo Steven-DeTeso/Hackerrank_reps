@@ -27,22 +27,41 @@
 # When printed, iterated or converted into a sequence, its elements will appear in an arbitrary order. 
 # Now, let's use our knowledge of sets and help Mickey. Ms. Gabriel Williams is a botany professor at District College. One day, she asked her student Mickey to compute the average of all the plants with distinct heights in her greenhouse.
 
-def average(array):
-    # your code goes here
-    # grab the set into a var
-    total = set(array)
-    # sum the nums in the var and store in diff var
-    sum_of_set = sum(total)
-    # check the length of the set 
-    len_of_set = len(total)
-    # write function that divides var of sum by var of length 
-    avg = sum_of_set / len_of_set
-    # format to 3 decimle places
-    round(avg, 3)
-    return avg
+# def average(array):
+#     # your code goes here
+#     # grab the set into a var
+#     total = set(array)
+#     # sum the nums in the var and store in diff var
+#     sum_of_set = sum(total)
+#     # check the length of the set 
+#     len_of_set = len(total)
+#     # write function that divides var of sum by var of length 
+#     avg = sum_of_set / len_of_set
+#     # format to 3 decimle places
+#     round(avg, 3)
+#     return avg
 
-if __name__ == '__main__':
-    n = int(input())
-    arr = list(map(int, input().split()))
-    result = average(arr)
-    print(result)
+# if __name__ == '__main__':
+#     n = int(input())
+#     arr = list(map(int, input().split()))
+#     result = average(arr)
+#     print(result)
+
+# Concatenation of Array - Given an integer array nums of length n, you want to create an array ans of length 2n where ans[i] == nums[i] and ans[i + n] == nums[i] for 0 <= i < n (0-indexed). Specifically, ans is the concatenation of two nums arrays.
+# Return the array ans.
+
+def getConcatenation(nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        # set var to empty list
+        lis = []
+        # iterate over nums and append to empty list
+        for i in range(len(nums)):
+            lis.append(nums[i])
+        # do it again 
+        for i in range(len(nums)):
+            lis.append(nums[i])
+        # return list
+        return lis
