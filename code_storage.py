@@ -1,3 +1,7 @@
+from django.db import models
+# need to install the package below to use it. 
+# from django_s3_storage.storage import S3Storage
+
 class Post(models.Model):
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='posts')
     image = models.ManyToManyField(Photo, on_delete=models.CASCADE, related_name='photos')
