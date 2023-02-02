@@ -328,4 +328,4 @@ while not end_of_game:
         end_of_game = True
         print("You win.")
 
-    print(hangman_art.stages[lives])
+    print(stages[lives])
