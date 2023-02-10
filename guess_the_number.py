@@ -9,37 +9,49 @@ logo = """
                                                                                 |___/                              
 """
 
-number = random.randint(1, 100)
-attempts = 0
 
-print(logo)
-print("Welcome to the Number Guessing Game!")
-print("I'm thinking of a number betwwen 1 and 100.")
-print(f"Psst, the correct answer is {number}")
-difficulty = input("Choose a difficulty. Enter 'easy' or 'hard': ").lower()
+EASY_LEVEL_TURNS = 10
+HARD_LEVEL_TURNS = 5
 
-if difficulty == 'easy':
-    attempts = 10
-elif difficulty == 'hard':
-    attempts = 5
+turns = 0
 
-is_game_over = False
+def check_answer(guess, answer, turns):
+    """Checks answer against guess, returns number of turns remaining."""
+    if guess > answer:
+        print("Too High!")
+        return turns - 1
+    elif guess < answer:
+        print("Too Low!")
+        return turns - 1
+    else:
+        print(f"You got it! The answer was {answer}")
 
-while not is_game_over:
-    print(f"You have {attempts} remaining attempts to guess the number.")
-    if attempts > 0:
+def set_difficulty():
+    difficulty = input("Choose a difficulty. Enter 'easy' or 'hard': ").lower()
+    if difficulty == 'easy':
+        return EASY_LEVEL_TURNS
+    else:
+        return HARD_LEVEL_TURNS
+
+
+def game():
+    print(logo)
+    print("Welcome to the Number Guessing Game!")
+    print("I'm thinking of a number betwwen 1 and 100.")
+    number = random.randint(1, 100)
+    print(f"Psst, the correct answer is {number}")
+
+    turns = set_difficulty()
+    guess = 0
+    while guess != number:
+        print(f"You have {turns} remaining attempts to guess the number.")
         guess = int(input("Make a guess: "))
-        if number > guess:
-            attempts -= 1
-            print("Too low")
+        turns = check_answer(guess, number, turns)
+        if turns == 0:
+            print("You've run out of guesses, you lose.")
+            return
+        elif guess != number:
             print("Guess again.")
-        elif number < guess:
-            attempts -= 1
-            print("Too high")
-            print("Guess again.")
-        elif number == guess:
-            print("You guessed it! You win!")
-            is_game_over = True
-    elif attempts == 0:
-        print("Game Over. You Lose")
-        is_game_over = True
+            
+
+game()
